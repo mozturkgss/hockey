@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player2.gd" type="Script" id=1]
+[ext_resource path="res://art/player2.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 16.7929
+
+[node name="Player2" type="KinematicBody2D" index="0"]
+
+position = Vector2( -1, 0 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "collision" ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -0.540989, -0.977009 )
+scale = Vector2( 2.65205, 2.65056 )
+shape = SubResource( 1 )
+
+

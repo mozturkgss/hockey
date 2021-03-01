@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://art/backGame.jpg" type="Texture" id=2]
+[ext_resource path="res://Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=7]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.0507, 10.0803 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 240.031, 400.723 )
+scale = Vector2( 6.99365, 12.0153 )
+
+[node name="backGame" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -0.00450516, -0.0666084 )
+scale = Vector2( 0.142987, 0.0832275 )
+texture = ExtResource( 2 )
+
+[node name="CollisionSag" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 33.5512, -0.210676 )
+scale = Vector2( 0.036419, 3.28725 )
+shape = SubResource( 1 )
+
+[node name="CollisionSol" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -33.4589, 0.562569 )
+scale = Vector2( 0.036419, 3.31008 )
+shape = SubResource( 1 )
+
+[node name="CollisionAltSol" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -25.0909, 32.0566 )
+scale = Vector2( 0.25188, 0.01 )
+shape = SubResource( 1 )
+
+[node name="CollisionUstSol" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -25.0649, -32.2136 )
+scale = Vector2( 0.25188, 0.01 )
+shape = SubResource( 1 )
+
+[node name="CollisionAltSag" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 25.325, 32.0804 )
+scale = Vector2( 0.25188, 0.01 )
+shape = SubResource( 1 )
+
+[node name="CollisionUstSag" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 25.3288, -32.1879 )
+scale = Vector2( 0.25188, 0.01 )
+shape = SubResource( 1 )
+
+[node name="Menu" parent="." instance=ExtResource( 3 )]
+
+[node name="Player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 240, 600 )
+
+[node name="Player2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 240, 200 )
+
+[node name="Ball" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240, 400 )
+
+[node name="Position1" type="Position2D" parent="."]
+position = Vector2( 240, 600 )
+
+[node name="Position2" type="Position2D" parent="."]
+position = Vector2( 240, 200 )
+
+[node name="PositionBall" type="Position2D" parent="."]
+position = Vector2( 240, 400 )
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -8.0
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+[connection signal="start_game" from="Menu" to="." method="new_game"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
