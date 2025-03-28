@@ -1,0 +1,188 @@
+[gd_scene load_steps=19 format=3 uid="uid://doabt8mdr5c03"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_ddn3l"]
+[ext_resource type="Texture2D" uid="uid://dwsb4at0ewsgd" path="res://saha1.png" id="1_wnl33"]
+[ext_resource type="Texture2D" uid="uid://mtxmdhv8mlre" path="res://puck.png" id="2_4hw2v"]
+[ext_resource type="Texture2D" uid="uid://cx7bdkj2qtim4" path="res://player1.png" id="3_j1gk5"]
+[ext_resource type="Texture2D" uid="uid://beu61uqreab08" path="res://player2.png" id="4_n81yw"]
+[ext_resource type="AudioStream" uid="uid://cmh8l14u7ilug" path="res://gameover.wav" id="6_4uif3"]
+[ext_resource type="Script" path="res://ball.gd" id="6_qqkep"]
+[ext_resource type="AudioStream" uid="uid://waoy1vajah1k" path="res://jump.wav" id="8_cvr3v"]
+[ext_resource type="AudioStream" uid="uid://d05t2mhp1cfmg" path="res://goal.wav" id="8_cy5ee"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p0bpc"]
+b = Vector2(128, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h6tkt"]
+a = Vector2(-74, 5)
+b = Vector2(-203, 5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3cxqo"]
+a = Vector2(286, -421)
+b = Vector2(415, -420)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ur8d4"]
+a = Vector2(5, 1)
+b = Vector2(133, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_md5v0"]
+b = Vector2(0, 786)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ceqxm"]
+a = Vector2(0, -38)
+b = Vector2(0, 748)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnbun"]
+radius = 44.5533
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d28pj"]
+radius = 44.2719
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aphvr"]
+radius = 30.0
+
+[node name="Oyun" type="Node2D"]
+script = ExtResource("1_ddn3l")
+
+[node name="Saha1" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wnl33")
+centered = false
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="Player2Score" type="RichTextLabel" parent="."]
+offset_left = 22.0
+offset_top = 341.0
+offset_right = 47.0
+offset_bottom = 396.0
+theme_override_colors/default_color = Color(0.0980392, 0.411765, 0.647059, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "0"
+fit_content = true
+scroll_active = false
+
+[node name="Player1Score" type="RichTextLabel" parent="."]
+offset_left = 22.0
+offset_top = 403.0
+offset_right = 47.0
+offset_bottom = 458.0
+theme_override_colors/default_color = Color(0.137255, 0.509804, 0.137255, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "0"
+fit_content = true
+scroll_active = false
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4uif3")
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="UstSolDuvar" type="Area2D" parent="."]
+position = Vector2(6, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UstSolDuvar"]
+position = Vector2(2, 0)
+shape = SubResource("SegmentShape2D_p0bpc")
+
+[node name="UstSagDuvar" type="Area2D" parent="."]
+position = Vector2(298, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UstSagDuvar"]
+position = Vector2(218, -5)
+shape = SubResource("SegmentShape2D_h6tkt")
+
+[node name="AltSolDuvar" type="Area2D" parent="."]
+position = Vector2(-57, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AltSolDuvar"]
+position = Vector2(-222, 415)
+shape = SubResource("SegmentShape2D_3cxqo")
+
+[node name="AltSagDuvar" type="Area2D" parent="."]
+position = Vector2(298, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AltSagDuvar"]
+position = Vector2(11, -6)
+shape = SubResource("SegmentShape2D_ur8d4")
+
+[node name="SolDuvar" type="Area2D" parent="."]
+position = Vector2(6, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolDuvar"]
+position = Vector2(0, 2)
+shape = SubResource("SegmentShape2D_md5v0")
+
+[node name="SagDuvar" type="Area2D" parent="."]
+position = Vector2(444, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SagDuvar"]
+position = Vector2(0, -20)
+shape = SubResource("SegmentShape2D_ceqxm")
+
+[node name="Player1" type="Area2D" parent="."]
+position = Vector2(225, 656)
+
+[node name="Player1S" type="Sprite2D" parent="Player1"]
+texture = ExtResource("3_j1gk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CircleShape2D_gnbun")
+
+[node name="Player2" type="Area2D" parent="."]
+position = Vector2(225, 145)
+
+[node name="Player2S" type="Sprite2D" parent="Player2"]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.989583, 0.989583)
+texture = ExtResource("4_n81yw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_d28pj")
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(225, 400)
+script = ExtResource("6_qqkep")
+
+[node name="BallS" type="Sprite2D" parent="Ball"]
+texture = ExtResource("2_4hw2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_aphvr")
+
+[node name="MessageLabel" type="RichTextLabel" parent="."]
+offset_left = 68.0
+offset_top = 366.0
+offset_right = 389.0
+offset_bottom = 435.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0.494118, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Mesaj[/center]"
+fit_content = true
+drag_and_drop_selection_enabled = false
+
+[node name="GoalSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cy5ee")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cvr3v")
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="area_entered" from="UstSolDuvar" to="." method="_on_ust_sol_duvar_area_entered"]
+[connection signal="area_entered" from="UstSagDuvar" to="." method="_on_ust_sag_duvar_area_entered"]
+[connection signal="area_entered" from="AltSolDuvar" to="." method="_on_alt_sol_duvar_area_entered"]
+[connection signal="area_entered" from="AltSagDuvar" to="." method="_on_alt_sag_duvar_area_entered"]
+[connection signal="area_entered" from="SolDuvar" to="." method="_on_sol_duvar_area_entered"]
+[connection signal="area_entered" from="SagDuvar" to="." method="_on_sag_duvar_area_entered"]
+[connection signal="area_entered" from="Player1" to="." method="_on_player_1_area_entered"]
+[connection signal="area_entered" from="Player2" to="." method="_on_player_2_area_entered"]
