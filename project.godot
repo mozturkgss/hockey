@@ -6,34 +6,33 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+config_version=5
 
 [application]
 
 config/name="Hokey"
-run/main_scene="res://Main.tscn"
-boot_splash/fullsize=false
+run/main_scene="res://menu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=480
-window/size/height=800
-window/size/resizable=false
-window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/size/viewport_width=450
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+window/handheld/orientation=1
 
-[gdnative]
+[input]
 
-singletons=[  ]
+click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 
-quality/intended_usage/framebuffer_allocation=0
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

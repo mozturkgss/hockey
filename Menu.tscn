@@ -1,179 +1,44 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://c8hvk3nrquaqo"]
 
-[ext_resource path="res://Menu.gd" type="Script" id=1]
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource type="Texture2D" uid="uid://dqn0v5rgqajuj" path="res://saha3.png" id="1_3fi32"]
+[ext_resource type="Script" path="res://menu.gd" id="1_fuyfq"]
+[ext_resource type="Texture2D" uid="uid://cbioh0b8arnj5" path="res://menubaslik1.png" id="2_5u8td"]
+[ext_resource type="AudioStream" uid="uid://bmtt6bb3tqhkn" path="res://click.wav" id="4_wh2gt"]
 
-[sub_resource type="DynamicFont" id=1]
-
-size = 64
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 72
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 48
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="HUD" type="CanvasLayer" index="0"]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 1 )
-
-[node name="Score1Label" type="Label" parent="." index="0"]
-
-anchor_left = 0.5
-anchor_top = 0.0
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -215.0
-margin_top = 400.0
-margin_right = -165.0
-margin_bottom = 500.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.321569, 0.658824, 0.74902, 1 )
-text = "0"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_fonts" ]
-
-[node name="TimerLabel" type="Label" parent="." index="1"]
-
-anchor_left = 0.5
-anchor_top = 0.0
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -215.0
-margin_top = 25.0
-margin_right = -165.0
-margin_bottom = 125.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.74902, 0.421753, 0.321569, 1 )
-text = "0"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_fonts" ]
-
-[node name="Score2Label" type="Label" parent="." index="2"]
-
-anchor_left = 0.5
-anchor_top = 0.0
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -215.0
-margin_top = 320.0
-margin_right = -165.0
-margin_bottom = 420.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.321569, 0.658824, 0.74902, 1 )
-text = "0"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
-
-[node name="MessageLabel" type="Label" parent="." index="3"]
-
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -220.0
-margin_right = 200.0
-margin_bottom = -43.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.322266, 0.659775, 0.75, 1 )
-text = "Hokey"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "custom_colors", "custom_fonts" ]
-
-[node name="MessageTimer" type="Timer" parent="." index="4"]
-
-process_mode = 1
-wait_time = 2.0
-one_shot = true
-autostart = false
-
-[node name="StartButton" type="Button" parent="." index="5"]
-
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -260.0
-margin_right = 100.0
-margin_bottom = -160.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.321569, 0.658824, 0.74902, 1 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Start"
-flat = false
-align = 1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Size Flags", "Theme", "Visibility", "custom_styles" ]
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fuyfq")
 
-[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[node name="Saha3" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3fi32")
+centered = false
 
-[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[node name="Menubaslik1" type="Sprite2D" parent="."]
+position = Vector2(225, 314)
+scale = Vector2(2, 1.30435)
+texture = ExtResource("2_5u8td")
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wh2gt")
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.58
+anchor_right = 0.668889
+anchor_bottom = 0.67625
+offset_left = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "START"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_pressed"]
